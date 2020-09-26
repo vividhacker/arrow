@@ -1,19 +1,35 @@
-#import hash_cracker
-#import webforcr
-import zipforcr
-curDir = 'home>'
+from os import path
+import hash_cracker
+
+directory = ""
 
 while True:
-  print("""\nthe custom Cracker\n------------------\n\n(1) ZIP Bruteforcing\n(2) Web Bruteforcing\n(3) Hash Cracking\n\n(99) exit\n\n\n\n\n\n\n""")
-  inp = input('> ')
-  if int(inp) == 1:
-    zip_inp = input('zipcracking> ')
-    os.system('clear')
-    print("""\nZip Cracking\n------------\n\n(1) dictionary attack\n(2) bruteforce attack\n\n(99) back\n\n\n\n\n\n\n""")
-    if int(zip_inp) == 1:
-      dic_zip_inp = input('zipcracking/dictionary')
-      
-  if int(inp) == 99:
-    break
-    
-    
+  cmd_line = input(directory, " » ")
+  cmdv = cmd_line.split(" ")
+  
+  if cmdv[0] == "crack":
+    if cmdv[1] == "-rb":
+      if cmdv[2] != "":
+        if path.exists(str(cmdv[2])):
+          rainbow_table_file = open(cmdv[2])
+          return rainbow_table_file
+        else:
+          print('Rainbowtable not found')
+        if cmdv[3] == "-f":
+          if path.exists(str(cmdv[4])):
+            hash_file = open(str(cmdv[4]))
+            for line in hash_file.readlines():
+              crack_hash(line, rainbow_table_file)
+        if cmdv[3] != "-f":
+          crack_hash(cmdv[3])
+        
+      else:
+        print('Rainbowtable not specified')
+   
+   elif cmdv[0]  == "gen_rb":
+     if cmdv[1] == "-d":
+       if path.exists(str(cmdv[2])):
+         dictionary_file_path = str(cmdv[2])
+         return dictionary_file_path
+      elif cmdv[2] == "-bg":
+        return state="brute"

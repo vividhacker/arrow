@@ -5,12 +5,12 @@ from threading import Thread
 from datetime import datetime
 import hashlib
 
-myLetters = string.punctuation, string.ascii_letters, string.digits
+myLetters =  string.ascii_letters, string.digits, string.punctuation
 
 # Crack a hash
-def crack_hash(hash):
+def crack_hash(hash, rb_table):
   starttime = datetime.now()
-  rainbowtable = open('rtable.txt', "r")
+  rainbowtable = open(rb_table, "r")
   for line in rainbowtable.readlines():
     hashpwd = line.split('#', 1)
     if hash == hashpwd[0]:
@@ -18,13 +18,14 @@ def crack_hash(hash):
       print('Task completed in '+str(datetime.now-starttime)+' seconds')
 
 #Rainbowtable Generator  
-def gen_rbtable(state="dict",hashalgo="sha512"):
-  passwords = open('tuscl.txt', 'r')
-  output = open("rtable.txt", "w")
+def gen_rbtable(state="dict",hashalgo="sha512",dict_path="lst/john.txt", rb_output="../rb_table.txt"):
+  passwords = open(dict_path, 'r')
+  output = open(rb_output, "w")
   starttime = datetime.now()
   if hashalgo == "sha512":
     if state == "dict":
-      for line in passwords.readlines(): 
+      for line in passwords.readlines():
+        global pwd
         pwd = line.strip('\n')
         hash = hashlib.sha512(str.encode(pwd))
         output.write(hash.hexdigest() + "#"+ str(pwd) + "\n")
@@ -33,11 +34,11 @@ def gen_rbtable(state="dict",hashalgo="sha512"):
       output.close()
       passwords.close()
     if state == "brute":
-      output = open("rtable.txt", "w")
-      for i in range(1,400):
+      output = open('../rb_table.txt', "a")
+      for i in range(1,64):
         for char in map(''.join, itertools.product(myLetters, repeat=i)):
           hash = hashlib.sha512(str.encode(char))
-          output.write(hash.hexdigest() + "#"+ pwd + "\n")
+          output.write(hash.hexdigest() + "#"+ char + "\n")
           stoptime = datetime.now() - starttime
           print(str(stoptime))
   if hashalgo == "md5":
@@ -52,11 +53,11 @@ def gen_rbtable(state="dict",hashalgo="sha512"):
       passwords.close()
       
     if state == "brute":
-      output = open("rtable.txt", "w")
-      for i in range(1,400):
+      output = open('../rb_table.txt', "a")
+      for i in range(1,64):
         for char in map(''.join, itertools.product(myLetters, repeat=i)):
           hash = hashlib.md5(str.encode(char))
-          output.write(hash.hexdigest() + "#"+ pwd + "\n")
+          output.write(hash.hexdigest() + "#"+ char + "\n")
           stoptime = datetime.now() - starttime
           print(str(stoptime))
         
@@ -71,12 +72,11 @@ def gen_rbtable(state="dict",hashalgo="sha512"):
       output.close()
       passwords.close()
     if state == "brute":
-      output = open("rtable.txt", "w")
-      for i in range(1,400):
+      output = open('../rb_table.txt', "a")
+      for i in range(1,64):
         for char in map(''.join, itertools.product(myLetters, repeat=i)):
           hash = hashlib.sha256(str.encode(char))
-          output.write(hash.hexdigest() + "#"+ pwd + "\n")
+          output.write(hash.hexdigest() + "#"+ char + "\n")
           stoptime = datetime.now() - starttime
           print(str(stoptime))
           
-gen_rbtable("brute", "sha512")
