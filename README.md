@@ -1,5 +1,6 @@
 # Arrow
 <img src="https://img.shields.io/github/repo-size/vividhacker/arrow?style=for-the-badge"></img>
+<img src="https://img.shields.io/github/languages/count/vividhacker/arrow?style=for-the-badge"></img>
 
 A hacking framework for stuff?
 
