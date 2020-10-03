@@ -18,7 +18,7 @@ Thanks
 ## Installation
 
 ```zsh
-git clone github.com/
+git clone https://github.com/vividhacker/arrow.git arrow_framework
 ```
 
 ## Usage
