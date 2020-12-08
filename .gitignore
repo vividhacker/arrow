@@ -1,0 +1,12 @@
+__pychache__/*
+__pychache__
+.vscode
+*.env
+.dockerignore
+docker-compose.yml
+docker-compose.debug.yml
+Dockerfile
+rb_tables/*
+testing.py
+example_hashfiles/
+example_hashfiles/*
