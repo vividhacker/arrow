@@ -23,7 +23,11 @@ git clone https://github.com/vividhacker/arrow.git arrow_framework
 ```
 
 ## Usage
+```
+usage: app.py [Operation] [Options] {input/output}
 
+for more info run arrow without args
+```
 
 
 ## Contributing
