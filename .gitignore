@@ -1,12 +1,21 @@
+<<<<<<< HEAD
 __pychache__/*
 __pychache__
+=======
+__pychache__
+__pychache__/*
+>>>>>>> 03176a839c3b76be4dd017fbeb5524c76171115a
 .vscode
 *.env
 .dockerignore
 docker-compose.yml
 docker-compose.debug.yml
 Dockerfile
+<<<<<<< HEAD
 rb_tables/*
 testing.py
 example_hashfiles/
 example_hashfiles/*
+=======
+lst/*
+>>>>>>> 03176a839c3b76be4dd017fbeb5524c76171115a
