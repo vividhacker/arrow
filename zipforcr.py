@@ -34,6 +34,7 @@ def bruteforce(zipFile):
     for char in map(''.join, itertools.product(myLetters, repeat=i)):
       t = Thread(target=crack, args=(zipFile, char))
       t.start()
+      
 def dictionary(zipFile):
   starttime = datetime.now()
   passwords = open('tuscl.txt', 'r')
