@@ -557,5 +557,120 @@ def gen_example_hashes(state="dict",hash_algo="sha512",dict_path="lst/john.txt")
         output.close()
         passwords.close()
 
+    elif hash_algo == "sha3_224":
+      
+      if state == "dict":
+        
+        for line in passwords.readlines():
+
+          pwd = line.strip('\n')
+          hash = sha3_224(str.encode(pwd))
+          output.write(hash.hexdigest()+ "\n")
+        stoptime = datetime.now() - starttime
+        print("Finished rainbowtable-Creation in: "+str(stoptime)+" seconds")
+
+        output.close()
+        passwords.close()
+        
+      if state == "brute":
+
+        output = open('../rb_table.txt', "a")
+        for i in range(1,64):
+          
+          for char in map(''.join, product(myLetters, repeat=i)):
+            hash = sha3_224(str.encode(char))
+            output.write(hash.hexdigest()+ "\n")
+          stoptime = datetime.now() - starttime
+          print("Finished rainbowtable-Creation in: "+str(stoptime)+" seconds")
+
+        output.close()
+        passwords.close()  
+
+    elif hash_algo == "sha3_256":
+      
+      if state == "dict":
+        
+        for line in passwords.readlines():
+
+          pwd = line.strip('\n')
+          hash = sha3_256(str.encode(pwd))
+          output.write(hash.hexdigest() + "\n")
+        stoptime = datetime.now() - starttime
+        print("Finished rainbowtable-Creation in: "+str(stoptime)+" seconds")
+
+        output.close()
+        passwords.close()
+        
+      if state == "brute":
+
+        output = open('../rb_table.txt', "a")
+        for i in range(1,64):
+          
+          for char in map(''.join, product(myLetters, repeat=i)):
+            hash = sha3_256(str.encode(char))
+            output.write(hash.hexdigest()+ "\n")
+          stoptime = datetime.now() - starttime
+          print("Finished rainbowtable-Creation in: "+str(stoptime)+" seconds")
+
+        output.close()
+        passwords.close()  
+
+    elif hash_algo == "sha3_384":
+      
+      if state == "dict":
+        
+        for line in passwords.readlines():
+
+          pwd = line.strip('\n')
+          hash = sha3_384(str.encode(pwd))
+          output.write(hash.hexdigest() + "\n")
+        stoptime = datetime.now() - starttime
+        print("Finished rainbowtable-Creation in: "+str(stoptime)+" seconds")
+
+        output.close()
+        passwords.close()
+        
+      if state == "brute":
+
+        output = open('../rb_table.txt', "a")
+        for i in range(1,64):
+          
+          for char in map(''.join, product(myLetters, repeat=i)):
+            hash = sha3_384(str.encode(char))
+            output.write(hash.hexdigest()+ "\n")
+          stoptime = datetime.now() - starttime
+          print("Finished rainbowtable-Creation in: "+str(stoptime)+" seconds")
+
+        output.close()
+        passwords.close()
+
+    elif hash_algo == "sha3_512":
+      
+      if state == "dict":
+        
+        for line in passwords.readlines():
+
+          pwd = line.strip('\n')
+          hash = sha3_512(str.encode(pwd))
+          output.write(hash.hexdigest() + "\n")
+        stoptime = datetime.now() - starttime
+        print("Finished rainbowtable-Creation in: "+str(stoptime)+" seconds")
+
+        output.close()
+        passwords.close()
+        
+      if state == "brute":
+
+        output = open('../rb_table.txt', "a")
+        for i in range(1,64):
+          
+          for char in map(''.join, product(myLetters, repeat=i)):
+            hash = sha3_512(str.encode(char))
+            output.write(hash.hexdigest()+ "\n")
+          stoptime = datetime.now() - starttime
+          print("Finished rainbowtable-Creation in: "+str(stoptime)+" seconds")
+
+        output.close()
+        passwords.close()
 
 create_hash()
