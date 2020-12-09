@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from sys import argv
-from hash_cracker import crack_hash, gen_rbtable, multi_crack
+from hash_cracker import crack_hash, gen_rbtable, multi_crack, gen_example_hashes
 
 
 
@@ -25,8 +25,8 @@ if argv[0] == '-c':
 
 
 
-elif str(argv[0]) == '-grb':
+elif str(argv[0]) == '-gen':
   if argv[1] == '-rbt':
-    gen_rbtable(state=str(argv[2]), hashalgo=str(argv[3]), dict_path=str(argv[4]), rb_output=str(argv[5]))
+    gen_rbtable(state=str(argv[2]), hashalgo=str(argv[3]), dict_path=str(argv[4]))
   if argv[1] == '-hf':
-    print('Hashes')
+    gen_example_hashes(state=str(argv[2]), hash_algo=str(argv[3]), dict_path=str(argv[4]))
